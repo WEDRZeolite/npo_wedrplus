@@ -43,10 +43,23 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 0.05em;
             color: #1f2933;
+            /* 画像と文字の間隔 */
+        }
+
+        .logo-img {
+            width: 36px;
+            /* 好きなサイズに調整 */
+            height: 36px;
+            border-radius: 50%;
+            /* 丸いアイコンにしたい場合 */
+            object-fit: cover;
         }
 
         .logo span {
@@ -396,7 +409,10 @@
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
-            <div class="logo">特定非営利活動法人 <span>WEDR＋</span></div>
+            <div class="logo">
+                <img src="/mediafile/logo/logo.png" alt="WEDR＋ロゴ" class="logo-img">
+                特定非営利活動法人 <span>WEDR＋</span>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#about">WEDR＋とは</a></li>
@@ -449,29 +465,7 @@
             <p class="section-lead">
                 最新のイベント情報や活動報告などを掲載しています。
             </p>
-            <ul class="news-list">
-                <li class="news-item">
-                    <div class="news-date">2025-12-30</div>
-                    <div class="news-title">
-                        <span class="news-category">イベント</span>
-                        年度末交流イベント「WEDR＋ Day」を開催しました
-                    </div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date">2025-11-15</div>
-                    <div class="news-title">
-                        <span class="news-category" style="background:#fefcbf;color:#975a16;">お知らせ</span>
-                        ホームページを公開しました
-                    </div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date">2025-10-01</div>
-                    <div class="news-title">
-                        <span class="news-category" style="background:#e6fffa;color:#2c7a7b;">募集</span>
-                        正会員・賛助会員の募集を開始しました
-                    </div>
-                </li>
-            </ul>
+            <ul class="news-list" id="news-list"></ul>
         </div>
     </section>
 
@@ -679,5 +673,41 @@
     </footer>
 
 </body>
+
+<script>
+    async function loadInformation() {
+        try {
+            const response = await fetch('./json/information.json');
+            const data = await response.json();
+
+            const list = document.getElementById('news-list');
+            list.innerHTML = ''; // 初期化
+
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'news-item';
+
+                li.innerHTML = `
+          <div class="news-date">${item.date}</div>
+          <div class="news-title">
+            <span class="news-category"
+              style="background:${item.categoryColor};color:${item.categoryTextColor};">
+              ${item.category}
+            </span>
+            ${item.title}
+          </div>
+        `;
+
+                list.appendChild(li);
+            });
+
+        } catch (error) {
+            console.error('お知らせの読み込みに失敗しました:', error);
+        }
+    }
+
+    // ページ読み込み時に実行
+    loadInformation();
+</script>
 
 </html>
