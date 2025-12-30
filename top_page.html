@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>特定非営利活動法人 WEDR＋｜公式ホームページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="特定非営利活動法人WEDR＋（ウェダー プラス）の公式サイト。地域で暮らす一人ひとりの“やりたい”をつなぎ、支え合う社会を目指しています。">
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "メイリオ", "ヒラギノ角ゴ ProN", sans-serif;
+            color: #333;
+            line-height: 1.7;
+            background: #f6f7fb;
+        }
+
+        a {
+            color: #1f6feb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e3e6f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            color: #1f2933;
+        }
+
+        .logo span {
+            color: #2b6cb0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        nav li a {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        nav li a:hover {
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background: linear-gradient(135deg, #e0ecff, #f8fafc);
+            padding: 60px 20px 80px;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: #2b6cb0;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 3px 8px rgba(43, 108, 176, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #245a94;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: 1px solid #2b6cb0;
+            color: #2b6cb0;
+            font-size: 14px;
+            font-weight: 600;
+            background: #ffffff;
+        }
+
+        .btn-outline:hover {
+            background: #ebf4ff;
+            text-decoration: none;
+        }
+
+        .hero-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+            font-size: 14px;
+        }
+
+        .hero-card-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: #edf2ff;
+            color: #4259c3;
+            margin-bottom: 10px;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 50px 20px;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1a202c;
+        }
+
+        .section-lead {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 24px;
+        }
+
+        /* お知らせ */
+        .news-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px 16px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .news-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 4px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            width: 90px;
+            color: #718096;
+            font-size: 12px;
+        }
+
+        .news-category {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            margin-right: 6px;
+            white-space: nowrap;
+        }
+
+        .news-title {
+            flex: 1;
+            color: #2d3748;
+        }
+
+        /* WEDR＋とは */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+            gap: 40px;
+        }
+
+        .about-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            font-size: 14px;
+        }
+
+        .about-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #718096;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .about-heading {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #2d3748;
+        }
+
+        /* 活動紹介 */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            font-size: 14px;
+        }
+
+        .activity-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #edf2ff;
+            color: #4c51bf;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .activity-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #2d3748;
+        }
+
+        /* 参加・支援 */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .support-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            font-size: 14px;
+        }
+
+        .support-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #2d3748;
+        }
+
+        .support-note {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 8px;
+        }
+
+        /* 団体概要・フッター */
+        .org-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+        }
+
+        .org-table th,
+        .org-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .org-table th {
+            width: 30%;
+            background: #f7fafc;
+            text-align: left;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .org-table tr:last-child th,
+        .org-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        footer {
+            background: #1a202c;
+            color: #cbd5e0;
+            padding: 18px 20px;
+            font-size: 12px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid,
+            .activities-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">特定非営利活動法人 <span>WEDR＋</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">WEDR＋とは</a></li>
+                    <li><a href="#activities">活動紹介</a></li>
+                    <li><a href="#support">参加・支援</a></li>
+                    <li><a href="#outline">団体概要</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ファーストビュー -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div>
+                <h1 class="hero-title">
+                    一人ひとりの「やりたい」が<br>
+                    地域の力になる社会へ。
+                </h1>
+                <p class="hero-subtitle">
+                    特定非営利活動法人WEDR＋（ウェダー プラス）は、<br>
+                    世代や立場をこえて「やってみたい」「つながりたい」という想いをつなぎ、<br>
+                    誰もが自分らしくチャレンジできる地域づくりをめざしています。
+                </p>
+                <div class="hero-buttons">
+                    <a href="#support" class="btn-primary">参加・支援の方法を見る</a>
+                    <a href="#about" class="btn-outline">WEDR＋について知る</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-badge">お知らせ</div>
+                <div class="hero-card-title">新規メンバー・ボランティアを募集しています</div>
+                <p>
+                    WEDR＋の活動を一緒に作っていく仲間を募集しています。<br>
+                    学生の方、社会人の方、子育て中の方など、経験や年齢は問いません。<br>
+                    まずはオンライン説明会からお気軽にご参加ください。
+                </p>
+                <p style="font-size: 12px; color:#718096; margin-top:10px;">
+                    ※この文章はサンプルです。実際の募集状況に合わせて書き換えてください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- お知らせ -->
+    <section>
+        <div class="section-inner">
+            <h2 class="section-title">お知らせ</h2>
+            <p class="section-lead">
+                最新のイベント情報や活動報告などを掲載しています。
+            </p>
+            <ul class="news-list">
+                <li class="news-item">
+                    <div class="news-date">2025-12-30</div>
+                    <div class="news-title">
+                        <span class="news-category">イベント</span>
+                        年度末交流イベント「WEDR＋ Day」を開催しました
+                    </div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2025-11-15</div>
+                    <div class="news-title">
+                        <span class="news-category" style="background:#fefcbf;color:#975a16;">お知らせ</span>
+                        ホームページを公開しました
+                    </div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2025-10-01</div>
+                    <div class="news-title">
+                        <span class="news-category" style="background:#e6fffa;color:#2c7a7b;">募集</span>
+                        正会員・賛助会員の募集を開始しました
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- WEDR＋とは -->
+    <section id="about">
+        <div class="section-inner">
+            <h2 class="section-title">WEDR＋とは</h2>
+            <p class="section-lead">
+                「We Do, Re-design = WEDR」。<br>
+                一人ではできないことも、つながればカタチにできる。そんな想いから生まれたNPOです。
+            </p>
+
+            <div class="about-grid">
+                <div class="about-box">
+                    <div class="about-label">Mission</div>
+                    <div class="about-heading">ミッション（私たちの存在意義）</div>
+                    <p>
+                        私たちは、一人ひとりの「やってみたい」「変えたい」という気持ちに寄りそい、<br>
+                        その一歩を一緒にデザインし、支え合える地域社会をつくることをミッションとしています。
+                    </p>
+
+                    <div class="about-label" style="margin-top:16px;">Vision</div>
+                    <div class="about-heading">ビジョン（めざす未来）</div>
+                    <p>
+                        ・失敗しても、もう一度挑戦できる地域であること。<br>
+                        ・世代や立場をこえて、対話し、学び合える場があること。<br>
+                        ・「支援する側／される側」に分かれない関係性が広がっていること。
+                    </p>
+                </div>
+
+                <div class="about-box">
+                    <div class="about-label">Values</div>
+                    <div class="about-heading">大切にしていること</div>
+                    <ul style="padding-left:18px; margin:0;">
+                        <li><strong>対話からはじめること</strong><br>
+                            すぐに解決策を示すのではなく、「どうしたいか」「何がモヤモヤしているか」を一緒に言葉にします。
+                        </li>
+                        <li style="margin-top:8px;"><strong>小さな一歩を歓迎すること</strong><br>
+                            完成されたアイデアより、「とりあえずやってみる」小さな一歩を大事にします。
+                        </li>
+                        <li style="margin-top:8px;"><strong>多様な違いを力にすること</strong><br>
+                            年齢・性別・背景・得意不得意の違いを活かし合うチームづくりをめざします。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活動紹介 -->
+    <section id="activities">
+        <div class="section-inner">
+            <h2 class="section-title">主な活動</h2>
+            <p class="section-lead">
+                WEDR＋では、「場づくり」「学び」「チャレンジ支援」の3つを軸に活動しています。<br>
+                ここに記載している内容はサンプルなので、実際の事業内容に合わせて自由に書き換えてください。
+            </p>
+
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-tag">場づくり</div>
+                    <div class="activity-title">地域サロン・交流イベントの企画運営</div>
+                    <p>
+                        世代や立場をこえた交流イベントや対話の場を、地域の方々と一緒に企画・運営しています。<br>
+                        月1回のオープンサロンや、テーマ別の少人数対話など、気軽に参加できる場づくりを行っています。
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-tag" style="background:#fefcbf;color:#975a16;">学び</div>
+                    <div class="activity-title">ワークショップ・勉強会の開催</div>
+                    <p>
+                        ファシリテーション、プロジェクトデザイン、コミュニケーションなど、<br>
+                        「やりたい」を形にするためのスキルや考え方を学べるプログラムを提供しています。
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-tag" style="background:#e6fffa;color:#2c7a7b;">チャレンジ支援</div>
+                    <div class="activity-title">小さなプロジェクト伴走</div>
+                    <p>
+                        「こういうことをやってみたい」というアイデアを一緒に整理し、<br>
+                        計画づくりから実行、振り返りまで伴走サポートします。<br>
+                        個人・学生団体・地域グループなど、形は問いません。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 参加・支援 -->
+    <section id="support">
+        <div class="section-inner">
+            <h2 class="section-title">参加・支援の方法</h2>
+            <p class="section-lead">
+                WEDR＋の活動は、会費やご寄付、ボランティアのみなさんの力によって支えられています。<br>
+                ご自身に合った形で、無理なく関わっていただけると嬉しいです。
+            </p>
+
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-title">会員として参加する</div>
+                    <p>
+                        活動に継続的に関わりたい方向けのプランです。<br>
+                        正会員・賛助会員・学生会員など、複数の会員区分をご用意しています。
+                    </p>
+                    <p class="support-note">
+                        年会費・会員区分の詳細は、規約に合わせて記載してください。
+                    </p>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-title">寄付で応援する</div>
+                    <p>
+                        プロジェクトや運営を資金面から支えていただくためのご寄付を受け付けています。<br>
+                        単発のご寄付、マンスリーサポーターなど、仕組みは自由に設定できます。
+                    </p>
+                    <p class="support-note">
+                        銀行振込先やオンライン決済サービス等の情報をここに記載してください。
+                    </p>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-title">ボランティアとして関わる</div>
+                    <p>
+                        イベント運営のサポート、広報、デザイン、事務など、<br>
+                        得意なこと・興味のあることを活かして活動に参加できます。
+                    </p>
+                    <p class="support-note">
+                        募集中のボランティア内容や応募フォームへのリンクを設置してください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 団体概要 -->
+    <section id="outline">
+        <div class="section-inner">
+            <h2 class="section-title">団体概要</h2>
+            <p class="section-lead">
+                法人情報や連絡先などの基本情報を掲載しています。実際の内容に合わせて編集してください。
+            </p>
+
+            <table class="org-table">
+                <tr>
+                    <th>名称</th>
+                    <td>特定非営利活動法人WEDR＋（ウェダー プラス）</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>〒000-0000　〇〇県〇〇市〇〇丁目〇〇番〇号</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>202X年X月X日</td>
+                </tr>
+                <tr>
+                    <th>代表理事</th>
+                    <td>山田　太郎（例）</td>
+                </tr>
+                <tr>
+                    <th>主な事業</th>
+                    <td>
+                        ・地域交流の場の企画運営事業<br>
+                        ・人材育成・学びの場づくり事業<br>
+                        ・市民活動・プロジェクト支援事業　ほか
+                    </td>
+                </tr>
+                <tr>
+                    <th>連絡先</th>
+                    <td>
+                        Mail：info@wedr-plus.jp（例）<br>
+                        Tel：000-0000-0000（例）
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- お問い合わせ（簡易） -->
+    <section id="contact">
+        <div class="section-inner">
+            <h2 class="section-title">お問い合わせ</h2>
+            <p class="section-lead">
+                活動に関するご質問・ご相談、取材・講演のご依頼などは、下記メールアドレスまでご連絡ください。
+            </p>
+            <div
+                style="background:#ffffff;border-radius:12px;padding:18px;box-shadow:0 4px 12px rgba(15,23,42,0.05);font-size:14px;">
+                <p style="margin:0 0 6px;">メールアドレス：<strong>info@wedr-plus.jp</strong>（仮）</p>
+                <p style="margin:0;font-size:12px;color:#718096;">
+                    ※実際にご利用のメールアドレスに変更してお使いください。<br>
+                    ※お問い合わせフォーム（Googleフォーム等）を設置する場合は、リンクを追加してください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-inner">
+            <div>© 特定非営利活動法人 WEDR＋</div>
+            <div>このサイトの文章・画像の無断転載を禁じます。</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
