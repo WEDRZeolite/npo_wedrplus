@@ -66,6 +66,77 @@
             color: #2b6cb0;
         }
 
+        /* ハンバーガーメニュー（スマホ用） */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* スマホ時のメニュー */
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                /* ヘッダーの高さに合わせる */
+                right: 0;
+                width: 100%;
+                background: #ffffff;
+                border-top: 1px solid #e3e6f0;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                z-index: 999;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            nav li {
+                padding: 12px 20px;
+                border-bottom: 1px solid #f1f1f1;
+            }
+
+            nav li:last-child {
+                border-bottom: none;
+            }
+
+            nav li a {
+                display: block;
+                width: 100%;
+                font-size: 16px;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                z-index: 1000;
+                /* メニューより上に */
+            }
+
+            .header-inner {
+                position: relative;
+                /* nav の absolute の基準にする */
+                justify-content: space-between;
+            }
+
+            nav.active {
+                display: block;
+            }
+        }
+
         nav ul {
             list-style: none;
             margin: 0;
@@ -413,7 +484,16 @@
                 <img src="/mediafile/logo/logo.png" alt="WEDR＋ロゴ" class="logo-img">
                 特定非営利活動法人 <span>WEDR＋</span>
             </div>
-            <nav>
+
+            <!-- ハンバーガーアイコン -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- ナビゲーション -->
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#about">WEDR＋とは</a></li>
                     <li><a href="#activities">活動紹介</a></li>
@@ -708,6 +788,34 @@
 
     // ページ読み込み時に実行
     loadInformation();
+</script>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    // ハンバーガー開閉
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation(); // クリックが外側に伝わらないように
+        navMenu.classList.toggle('active');
+    });
+
+    // メニュー内のリンクを押したら閉じる
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // ▼ 追加：メニュー以外をタップしたら閉じる
+    document.addEventListener('click', (e) => {
+        const isClickInsideMenu = navMenu.contains(e.target);
+        const isClickHamburger = hamburger.contains(e.target);
+
+        if (!isClickInsideMenu && !isClickHamburger) {
+            navMenu.classList.remove('active');
+        }
+    });
 </script>
 
 </html>
